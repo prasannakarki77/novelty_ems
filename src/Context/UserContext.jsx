@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
 
   const value = {
     userList,
+    barChartData,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
@@ -49,11 +50,11 @@ const users = [
 ];
 
 const barChartData = [
-  { year: "2016", projects: 30 },
-  { year: "2017", projects: 50 },
-  { year: "2018", projects: 51 },
-  { year: "2019", projects: 45 },
-  { year: "2020", projects: 10 },
-  { year: "2021", projects: 70 },
-  { year: "2022", projects: 80 },
+  { year: "2016", employees: 30 },
+  { year: "2017", employees: 50 },
+  { year: "2018", employees: 55 },
+  { year: "2019", employees: 58 },
+  { year: "2020", employees: 35 },
+  { year: "2021", employees: 70 },
+  { year: "2022", employees: 80 },
 ];
