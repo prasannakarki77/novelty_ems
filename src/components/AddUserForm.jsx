@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useContext, useState } from "react";
-import { toast } from "react-toastify";
+
 import UserContext from "../Context/UserContext";
 function AddUserForm(props) {
   const { setName, setEmail, setPhone, setDepartment, addUser } =

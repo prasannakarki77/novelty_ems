@@ -1,5 +1,5 @@
 import { Children, createContext, useState } from "react";
-
+import { toast } from "react-toastify";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -31,6 +31,7 @@ export const UserProvider = ({ children }) => {
     };
     users.push(newUser);
     setUserList(users);
+    toast.success("User added successfully!");
   };
 
   const removeUser = (user) => {
@@ -42,6 +43,7 @@ export const UserProvider = ({ children }) => {
 
     users.splice(index, 1);
     setUserList(users);
+    toast.success("Employee removed successfully!");
   };
 
   const value = {
