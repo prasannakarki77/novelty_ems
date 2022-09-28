@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import UserContext from "../Context/UserContext";
 function UpdateForm(props) {
@@ -17,6 +17,7 @@ function UpdateForm(props) {
     email,
     phone,
     department,
+    selectedUser,
   } = useContext(UserContext);
 
   return (
@@ -41,8 +42,8 @@ function UpdateForm(props) {
               onChange={(e) => {
                 setName(e.target.value);
               }}
+              defaultValue={selectedUser.name}
               required
-              defaultValue={name}
             />
           </Form.Group>
 
@@ -55,6 +56,7 @@ function UpdateForm(props) {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
+                defaultValue={selectedUser.email}
                 required
               />
             </Form.Group>
@@ -66,6 +68,7 @@ function UpdateForm(props) {
                 onChange={(e) => {
                   setPhone(e.target.value);
                 }}
+                defaultValue={selectedUser.phone}
                 required
               />
             </Form.Group>
@@ -78,6 +81,7 @@ function UpdateForm(props) {
               onChange={(e) => {
                 setDepartment(e.target.value);
               }}
+              defaultValue={selectedUser.department}
               required
             />
           </Form.Group>

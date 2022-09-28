@@ -1,4 +1,4 @@
-import { Children, createContext, useState } from "react";
+import { Children, createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 const UserContext = createContext();
 
@@ -13,6 +13,15 @@ export const UserProvider = ({ children }) => {
   const [department, setDepartment] = useState("");
 
   const [selectedUser, setSelectedUser] = useState({});
+
+  useEffect(() => {
+    setName(selectedUser.name);
+    setEmail(selectedUser.email);
+    setPhone(selectedUser.phone);
+    setDepartment(selectedUser.department);
+    console.log(selectedUser);
+  }, [selectedUser]);
+
   const filterList = (searchText) => {
     let filteredList = users.filter((user) =>
       user.name.toLowerCase().includes(searchText.toLowerCase())
@@ -51,8 +60,31 @@ export const UserProvider = ({ children }) => {
 
   const updateUser = (e) => {
     e.preventDefault();
+    const index = users.findIndex((object) => {
+      return object.id === selectedUser.id;
+    });
 
+    if (name === "") {
+      setName(selectedUser.name);
+    }
+    if (email === "") {
+      setEmail(selectedUser.email);
+    }
+    if (phone === "") {
+      setPhone(selectedUser.phone);
+    }
+    if (department === "") {
+      setDepartment(selectedUser.department);
+    }
+    users[index].name = name;
+    users[index].email = email;
+    users[index].phone = phone;
+    users[index].department = department;
+    setUserList(users);
     console.log(selectedUser);
+
+    setUpdatePopup(false);
+    toast.success("Updated successfully!");
   };
 
   const value = {

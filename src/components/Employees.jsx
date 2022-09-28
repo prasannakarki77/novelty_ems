@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../Context/UserContext";
 import Table from "react-bootstrap/Table";
 import { FaEdit } from "react-icons/fa";
@@ -22,6 +22,9 @@ const Employees = () => {
     setUpdatePopup,
     selectedUser,
     setName,
+    setEmail,
+    setPhone,
+    setDepartment,
   } = useContext(UserContext);
 
   const deleteHandler = (user) => {
@@ -31,10 +34,12 @@ const Employees = () => {
   const addUserHandler = () => {
     setAddPopup(true);
   };
+
   const updateHandler = (user) => {
+    console.log(user);
     setSelectedUser(user);
-    setName(selectedUser.name);
-    console.log(selectedUser.name);
+    console.log(selectedUser);
+
     setUpdatePopup(true);
   };
   return (

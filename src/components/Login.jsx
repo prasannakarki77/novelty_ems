@@ -23,8 +23,10 @@ const Login = () => {
       const verifyUser = userList.find(
         (user) => user.email === email && user.password === password
       );
-      localStorage.setItem("currentUser", verifyUser.name);
+
+      console.log(verifyUser);
       if (verifyUser) {
+        localStorage.setItem("currentUser", verifyUser.name);
         window.location.replace("/dashboard");
       } else {
         toast.error("Invalid credentials!! Try again.");
