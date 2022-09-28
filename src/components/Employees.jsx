@@ -5,24 +5,40 @@ import { FaEdit } from "react-icons/fa";
 import { BsTrashFill } from "react-icons/bs";
 import { BiSearchAlt } from "react-icons/bi";
 import RemovePopup from "./RemovePopup";
+import Button from "react-bootstrap/Button";
+import AddUserForm from "./AddUserForm";
+
 const Employees = () => {
-  const { userList, filterList, deletePopup, setDeletePopUp, setSelectedUser } =
-    useContext(UserContext);
+  const {
+    userList,
+    filterList,
+    deletePopup,
+    setDeletePopUp,
+    setSelectedUser,
+    addPopup,
+    setAddPopup,
+  } = useContext(UserContext);
 
   const [user, setUser] = useState({});
   const deleteHandler = (user) => {
     setUser(user);
     setDeletePopUp(true);
   };
+  const addUserHandler = () => {
+    setAddPopup(true);
+  };
   return (
-    <div>
+    <div className="m-5">
       <RemovePopup
         show={deletePopup}
         onHide={() => setDeletePopUp(false)}
         user={user}
       />
+      <AddUserForm show={addPopup} onHide={() => setAddPopup(false)} />
       <div>Employees</div>
-
+      <Button variant="primary" className="my-3" onClick={addUserHandler}>
+        Add new Employee
+      </Button>
       <div className="search__field">
         <input
           type="text"

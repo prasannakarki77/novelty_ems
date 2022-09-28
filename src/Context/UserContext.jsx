@@ -5,13 +5,34 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [userList, setUserList] = useState(users);
   const [deletePopup, setDeletePopUp] = useState(false);
-  const [selectedUser, setSelectedUser] = useState({});
+  const [addPopup, setAddPopup] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [department, setDepartment] = useState("");
   const filterList = (searchText) => {
     let filteredList = users.filter((user) =>
       user.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setUserList(filteredList);
   };
+
+  const addUser = (e) => {
+    e.preventDefault();
+    let lastUserInList = users[users.length - 1];
+    console.log(lastUserInList.id);
+    setAddPopup(false);
+    let newUser = {
+      id: lastUserInList.id + 1,
+      name: name,
+      email: email,
+      phone: phone,
+      department: department,
+    };
+    users.push(newUser);
+    setUserList(users);
+  };
+
   const removeUser = (user) => {
     setDeletePopUp(false);
     console.log(user);
@@ -22,6 +43,7 @@ export const UserProvider = ({ children }) => {
     users.splice(index, 1);
     setUserList(users);
   };
+
   const value = {
     userList,
     barChartData,
@@ -30,8 +52,13 @@ export const UserProvider = ({ children }) => {
     removeUser,
     setDeletePopUp,
     deletePopup,
-    setSelectedUser,
-    selectedUser,
+    setAddPopup,
+    addPopup,
+    setPhone,
+    setEmail,
+    setName,
+    setDepartment,
+    addUser,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
