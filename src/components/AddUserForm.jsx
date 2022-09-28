@@ -19,7 +19,7 @@ function AddUserForm(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add New User
+          Add New Employee
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

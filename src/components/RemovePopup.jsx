@@ -10,10 +10,10 @@ const RemovePopup = (props) => {
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <h5>Are you sure you want to remove this user?</h5>
+        <h5>Are you sure you want to remove this employee?</h5>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={() => removeUser(props.user)}>Yes</Button>
+        <Button onClick={() => removeUser()}>Yes</Button>
         <Button className="btn-danger" onClick={props.onHide}>
           No
         </Button>
