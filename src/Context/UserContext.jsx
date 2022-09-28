@@ -5,11 +5,18 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [userList, setUserList] = useState(users);
 
+  const filterList = (searchText) => {
+    let filteredList = users.filter((user) =>
+      user.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setUserList(filteredList);
+  };
   const value = {
     userList,
     barChartData,
+    LineChartData,
+    filterList,
   };
-
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
@@ -19,6 +26,7 @@ export default UserContext;
 
 const users = [
   {
+    id: 1,
     name: "Prasanna Karki",
     email: "prasanna.karki77@gmail.com",
     phone: "93423423",
@@ -27,6 +35,7 @@ const users = [
     userType: "admin",
   },
   {
+    id: 2,
     name: "Rajesh KC",
     email: "rajesh@gmail.com",
     phone: "25325453",
@@ -34,6 +43,7 @@ const users = [
     userType: "employee",
   },
   {
+    id: 3,
     name: "Manita Shakya",
     email: "manita@gmail.com",
     phone: "43443434",
@@ -41,6 +51,7 @@ const users = [
     userType: "employee",
   },
   {
+    id: 4,
     name: "Rijwol Khadka",
     email: "rijwol@gmail.com",
     phone: "234234323",
@@ -57,4 +68,13 @@ const barChartData = [
   { year: "2020", employees: 35 },
   { year: "2021", employees: 70 },
   { year: "2022", employees: 80 },
+];
+const LineChartData = [
+  { year: "2016", projects: 30 },
+  { year: "2017", projects: 50 },
+  { year: "2018", projects: 55 },
+  { year: "2019", projects: 58 },
+  { year: "2020", projects: 35 },
+  { year: "2021", projects: 70 },
+  { year: "2022", projects: 80 },
 ];
