@@ -1,14 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import UserContext from "../Context/UserContext";
 import Table from "react-bootstrap/Table";
 import { FaEdit } from "react-icons/fa";
 import { BsTrashFill } from "react-icons/bs";
 import { BiSearchAlt } from "react-icons/bi";
+import RemovePopup from "./RemovePopup";
 const Employees = () => {
-  const { userList, filterList } = useContext(UserContext);
+  const { userList, filterList, deletePopup, setDeletePopUp, setSelectedUser } =
+    useContext(UserContext);
 
+  const [user, setUser] = useState({});
+  const deleteHandler = (user) => {
+    setUser(user);
+    setDeletePopUp(true);
+  };
   return (
     <div>
+      <RemovePopup
+        show={deletePopup}
+        onHide={() => setDeletePopUp(false)}
+        user={user}
+      />
       <div>Employees</div>
 
       <div className="search__field">
@@ -42,7 +54,7 @@ const Employees = () => {
               <td>{user.department}</td>
               <td>
                 <FaEdit />
-                <BsTrashFill />
+                <BsTrashFill onClick={() => deleteHandler(user)} />
               </td>
             </tr>
           ))}

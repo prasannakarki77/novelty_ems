@@ -4,18 +4,34 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [userList, setUserList] = useState(users);
-
+  const [deletePopup, setDeletePopUp] = useState(false);
+  const [selectedUser, setSelectedUser] = useState({});
   const filterList = (searchText) => {
     let filteredList = users.filter((user) =>
       user.name.toLowerCase().includes(searchText.toLowerCase())
     );
     setUserList(filteredList);
   };
+  const removeUser = (user) => {
+    setDeletePopUp(false);
+    console.log(user);
+    const index = users.findIndex((object) => {
+      return object.id === user.id;
+    });
+
+    users.splice(index, 1);
+    setUserList(users);
+  };
   const value = {
     userList,
     barChartData,
     LineChartData,
     filterList,
+    removeUser,
+    setDeletePopUp,
+    deletePopup,
+    setSelectedUser,
+    selectedUser,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
