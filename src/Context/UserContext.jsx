@@ -6,10 +6,13 @@ export const UserProvider = ({ children }) => {
   const [userList, setUserList] = useState(users);
   const [deletePopup, setDeletePopUp] = useState(false);
   const [addPopup, setAddPopup] = useState(false);
+  const [updatePopup, setUpdatePopup] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [department, setDepartment] = useState("");
+
+  const [selectedUser, setSelectedUser] = useState({});
   const filterList = (searchText) => {
     let filteredList = users.filter((user) =>
       user.name.toLowerCase().includes(searchText.toLowerCase())
@@ -34,11 +37,11 @@ export const UserProvider = ({ children }) => {
     toast.success("User added successfully!");
   };
 
-  const removeUser = (user) => {
+  const removeUser = () => {
     setDeletePopUp(false);
-    console.log(user);
+    console.log(selectedUser);
     const index = users.findIndex((object) => {
-      return object.id === user.id;
+      return object.id === selectedUser.id;
     });
 
     users.splice(index, 1);
@@ -46,8 +49,16 @@ export const UserProvider = ({ children }) => {
     toast.success("Employee removed successfully!");
   };
 
+  const updateUser = (e) => {
+    e.preventDefault();
+
+    console.log(selectedUser);
+  };
+
   const value = {
     userList,
+    selectedUser,
+    setSelectedUser,
     barChartData,
     LineChartData,
     filterList,
@@ -61,6 +72,9 @@ export const UserProvider = ({ children }) => {
     setName,
     setDepartment,
     addUser,
+    updateUser,
+    updatePopup,
+    setUpdatePopup,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

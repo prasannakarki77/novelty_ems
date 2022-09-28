@@ -7,6 +7,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import RemovePopup from "./RemovePopup";
 import Button from "react-bootstrap/Button";
 import AddUserForm from "./AddUserForm";
+import UpdateForm from "./UpdateForm";
 
 const Employees = () => {
   const {
@@ -17,24 +18,30 @@ const Employees = () => {
     setSelectedUser,
     addPopup,
     setAddPopup,
+    updatePopup,
+    setUpdatePopup,
+    selectedUser,
+    setName,
   } = useContext(UserContext);
 
-  const [user, setUser] = useState({});
   const deleteHandler = (user) => {
-    setUser(user);
+    setSelectedUser(user);
     setDeletePopUp(true);
   };
   const addUserHandler = () => {
     setAddPopup(true);
   };
+  const updateHandler = (user) => {
+    setSelectedUser(user);
+    setName(selectedUser.name);
+    console.log(selectedUser.name);
+    setUpdatePopup(true);
+  };
   return (
     <div className="m-5">
-      <RemovePopup
-        show={deletePopup}
-        onHide={() => setDeletePopUp(false)}
-        user={user}
-      />
+      <RemovePopup show={deletePopup} onHide={() => setDeletePopUp(false)} />
       <AddUserForm show={addPopup} onHide={() => setAddPopup(false)} />
+      <UpdateForm show={updatePopup} onHide={() => setUpdatePopup(false)} />
       <div>Employees</div>
       <Button variant="primary" className="my-3" onClick={addUserHandler}>
         Add new Employee
@@ -69,7 +76,7 @@ const Employees = () => {
               <td>{user.phone}</td>
               <td>{user.department}</td>
               <td>
-                <FaEdit />
+                <FaEdit onClick={() => updateHandler(user)} />
                 <BsTrashFill onClick={() => deleteHandler(user)} />
               </td>
             </tr>
