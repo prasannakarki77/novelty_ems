@@ -43,7 +43,7 @@ export const UserProvider = ({ children }) => {
     };
     users.push(newUser);
     setUserList(users);
-    toast.success("User added successfully!");
+    toast.success("Employee added successfully!");
   };
 
   const removeUser = () => {

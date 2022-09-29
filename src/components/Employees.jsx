@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../Context/UserContext";
 import Table from "react-bootstrap/Table";
 import { FaEdit } from "react-icons/fa";
-import { BsTrashFill } from "react-icons/bs";
+import { BsTrashFill, BsPersonLinesFill } from "react-icons/bs";
 import { BiSearchAlt, BiSortAlt2 } from "react-icons/bi";
 import RemovePopup from "./RemovePopup";
 import Button from "react-bootstrap/Button";
 import AddUserForm from "./AddUserForm";
 import UpdateForm from "./UpdateForm";
 import "../styles/employees.scss";
+import logo from "../assets/novelty.svg";
+import { Link } from "react-router-dom";
 const Employees = () => {
   const {
     userList,
@@ -63,23 +65,35 @@ const Employees = () => {
     setUpdatePopup(true);
   };
   return (
-    <div className="m-5">
+    <div className="epage">
       <RemovePopup show={deletePopup} onHide={() => setDeletePopUp(false)} />
       <AddUserForm show={addPopup} onHide={() => setAddPopup(false)} />
       <UpdateForm show={updatePopup} onHide={() => setUpdatePopup(false)} />
-      <div>Employees</div>
-      <Button variant="primary" className="my-3" onClick={addUserHandler}>
-        Add new Employee
-      </Button>
-      <div className="search__field">
-        <input
-          type="text"
-          placeholder="Search Vehicle"
-          className="search__box"
-          onChange={(e) => filterList(e.target.value)}
-        />
+      <Link to="/dashboard" className="epage__logo">
+        <img src={logo} alt="novelty logo" />
+      </Link>
 
-        <BiSearchAlt />
+      <h3 className=" epage__heading">
+        <BsPersonLinesFill /> Employees
+      </h3>
+      <div className="epage__actions">
+        <div className="epage__search">
+          <input
+            type="text"
+            placeholder="Employee name"
+            className="epage__search--box"
+            onChange={(e) => filterList(e.target.value)}
+          />
+
+          <BiSearchAlt />
+        </div>
+        <Button
+          variant="primary"
+          className="my-3 epage__add-btn"
+          onClick={addUserHandler}
+        >
+          Add new Employee
+        </Button>
       </div>
       <Table striped bordered hover>
         <thead>
@@ -111,8 +125,14 @@ const Employees = () => {
               <td>{user.phone}</td>
               <td>{user.department}</td>
               <td>
-                <FaEdit onClick={() => updateHandler(user)} />
-                <BsTrashFill onClick={() => deleteHandler(user)} />
+                <FaEdit
+                  onClick={() => updateHandler(user)}
+                  className="edit-btn epage__table--btn"
+                />
+                <BsTrashFill
+                  onClick={() => deleteHandler(user)}
+                  className="remove-btn  epage__table--btn"
+                />
               </td>
             </tr>
           ))}
