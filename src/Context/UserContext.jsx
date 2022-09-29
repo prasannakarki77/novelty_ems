@@ -107,6 +107,7 @@ export const UserProvider = ({ children }) => {
     updateUser,
     updatePopup,
     setUpdatePopup,
+    setUserList,
   };
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

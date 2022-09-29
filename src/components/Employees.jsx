@@ -21,12 +21,32 @@ const Employees = () => {
     updatePopup,
     setUpdatePopup,
     selectedUser,
-    setName,
-    setEmail,
-    setPhone,
-    setDepartment,
+    setUserList,
   } = useContext(UserContext);
 
+  const [order, setOrder] = useState("ASC");
+  const sortColumn = (col) => {
+    if (order === "ASC") {
+      console.log(col);
+
+      const sorted = [...userList].sort((a, b) =>
+        a[col].toString().toLowerCase() > b[col].toString().toLowerCase()
+          ? 1
+          : -1
+      );
+      setUserList(sorted);
+      setOrder("DESC");
+    }
+    if (order === "DESC") {
+      const sorted = [...userList].sort((a, b) =>
+        a[col].toString().toLowerCase() < b[col].toString().toLowerCase()
+          ? 1
+          : -1
+      );
+      setUserList(sorted);
+      setOrder("ASC");
+    }
+  };
   const deleteHandler = (user) => {
     setSelectedUser(user);
     setDeletePopUp(true);
@@ -64,11 +84,11 @@ const Employees = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Department</th>
+            <th onClick={() => sortColumn("id")}>Id</th>
+            <th onClick={() => sortColumn("name")}>Name</th>
+            <th onClick={() => sortColumn("email")}>Email</th>
+            <th onClick={() => sortColumn("phone")}>Phone</th>
+            <th onClick={() => sortColumn("department")}>Department</th>
             <th>Actions</th>
           </tr>
         </thead>
