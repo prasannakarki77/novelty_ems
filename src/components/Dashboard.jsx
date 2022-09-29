@@ -13,19 +13,37 @@ import {
 } from "recharts";
 import UserContext from "../Context/UserContext";
 import "../styles/dashboard.scss";
+import logo from "../assets/novelty.svg";
+import { RiDashboardFill } from "react-icons/ri";
+import { BsPersonLinesFill } from "react-icons/bs";
+import { FaUserCog } from "react-icons/fa";
 const Dashboard = () => {
-  const { barChartData, LineChartData } = useContext(UserContext);
+  const { barChartData, LineChartData, userList } = useContext(UserContext);
+  const loggedUser = localStorage.getItem("currentUser");
   return (
-    <>
-      <h1>Novelty Dashboard</h1>
+    <div className="dashboard">
+      <div className="dashboard__logo">
+        <img src={logo} alt="novelty logo" />
+      </div>
+      <h1 className="dashboard__heading">
+        <RiDashboardFill />
+        <p>Dashboard</p>
+      </h1>
+      <div className="boxes">
+        <Link to="/employees" className="box">
+          <h3 className="box__heading employee-heading">
+            <BsPersonLinesFill className="employee-icon" /> Employees
+          </h3>
 
-      <div className="dashboard">
-        <Link to="/employees">
-          <div>Employees</div>
+          <p className="user-count">{userList.length}</p>
         </Link>
-        <div className="">
-          <h3 className="text-center">Novelty Employees Growth</h3>
-          <BarChart width={530} height={250} data={barChartData}>
+        <Link to="/dashboard" className="box">
+          <FaUserCog className="box__icon" />
+          <h4 className="user">{loggedUser}</h4>
+        </Link>
+        <div className="box">
+          <h3 className="box__heading">Novelty Employees Growth</h3>
+          <BarChart width={480} height={250} data={barChartData}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
             <YAxis />
@@ -34,10 +52,10 @@ const Dashboard = () => {
             <Bar dataKey="employees" fill="#C4A484" />
           </BarChart>
         </div>
-        <div className="">
-          <h3>Novelty Projects Growth</h3>
+        <div className="box">
+          <h3 className="box__heading">Novelty Projects Growth</h3>
           <LineChart
-            width={530}
+            width={480}
             height={250}
             data={LineChartData}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
@@ -51,7 +69,7 @@ const Dashboard = () => {
           </LineChart>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
