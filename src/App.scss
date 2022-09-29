@@ -1,0 +1,15 @@
+.login-container {
+  padding: 10px;
+  background: rgb(240, 230, 221);
+  background: linear-gradient(
+    327deg,
+    rgba(240, 230, 221, 1) 0%,
+    rgba(204, 152, 101, 1) 75%,
+    rgba(195, 141, 89, 1) 100%
+  );
+  min-height: 100vh;
+}
+
+.app {
+  padding: 10px;
+}

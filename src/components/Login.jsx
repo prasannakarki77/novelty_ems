@@ -4,7 +4,8 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import UserContext from "../Context/UserContext";
 import { toast } from "react-toastify";
-
+import logo from "../assets/novelty.svg";
+import "../styles/login.scss";
 const Login = () => {
   const { userList } = useContext(UserContext);
   const [email, setEmail] = useState("");
@@ -34,32 +35,37 @@ const Login = () => {
     }
   };
   return (
-    <div>
-      <Form onSubmit={handleSubmit} className="login-form">
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
+    <div className="login-container">
+      <div className="login">
+        <div className="login__logo">
+          <img src={logo} alt="novelty logo" />
+        </div>
+        <Form onSubmit={handleSubmit} className="login__form">
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Form.Text className="text-danger text-sm">{passwordReq}</Form.Text>
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Form.Text className="text-danger text-sm">{passwordReq}</Form.Text>
+          </Form.Group>
+          <Button variant="primary" type="submit" className="login__btn">
+            Login
+          </Button>
+        </Form>
+      </div>
     </div>
   );
 };

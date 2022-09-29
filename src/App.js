@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter } from "react-router-dom";
 import Body from "./components/Body";
 import { UserProvider } from "./Context/UserContext";
@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
-    <>
+    <div className="app">
       <BrowserRouter>
         <ToastContainer
           position="top-center"
@@ -23,7 +23,7 @@ function App() {
           <Body />
         </UserProvider>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

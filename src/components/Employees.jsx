@@ -3,12 +3,12 @@ import UserContext from "../Context/UserContext";
 import Table from "react-bootstrap/Table";
 import { FaEdit } from "react-icons/fa";
 import { BsTrashFill } from "react-icons/bs";
-import { BiSearchAlt } from "react-icons/bi";
+import { BiSearchAlt, BiSortAlt2 } from "react-icons/bi";
 import RemovePopup from "./RemovePopup";
 import Button from "react-bootstrap/Button";
 import AddUserForm from "./AddUserForm";
 import UpdateForm from "./UpdateForm";
-
+import "../styles/employees.scss";
 const Employees = () => {
   const {
     userList,
@@ -84,17 +84,27 @@ const Employees = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th onClick={() => sortColumn("id")}>Id</th>
-            <th onClick={() => sortColumn("name")}>Name</th>
-            <th onClick={() => sortColumn("email")}>Email</th>
-            <th onClick={() => sortColumn("phone")}>Phone</th>
-            <th onClick={() => sortColumn("department")}>Department</th>
+            <th onClick={() => sortColumn("id")}>
+              Id <BiSortAlt2 />
+            </th>
+            <th onClick={() => sortColumn("name")}>
+              Name <BiSortAlt2 />
+            </th>
+            <th onClick={() => sortColumn("email")}>
+              Email <BiSortAlt2 />
+            </th>
+            <th onClick={() => sortColumn("phone")}>
+              Phone <BiSortAlt2 />
+            </th>
+            <th onClick={() => sortColumn("department")}>
+              Department <BiSortAlt2 />
+            </th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {userList.map((user) => (
-            <tr>
+            <tr key={user.id}>
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>

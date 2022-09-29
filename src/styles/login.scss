@@ -1,0 +1,26 @@
+.login {
+  background: #ffff;
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 30px 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 13px;
+  &__logo {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  &__btn {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #bf8b59;
+    outline: none;
+    border: none;
+    transition: all 0.3s;
+    &:hover {
+      background-color: #9d6939;
+      transform: translateY(-2px);
+    }
+  }
+}
