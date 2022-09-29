@@ -69,7 +69,7 @@ const Employees = () => {
       <RemovePopup show={deletePopup} onHide={() => setDeletePopUp(false)} />
       <AddUserForm show={addPopup} onHide={() => setAddPopup(false)} />
       <UpdateForm show={updatePopup} onHide={() => setUpdatePopup(false)} />
-      <Link to="/dashboard" className="epage__logo">
+      <Link to="/" className="epage__logo">
         <img src={logo} alt="novelty logo" />
       </Link>
 

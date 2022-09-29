@@ -17,13 +17,28 @@ import logo from "../assets/novelty.svg";
 import { RiDashboardFill } from "react-icons/ri";
 import { BsPersonLinesFill } from "react-icons/bs";
 import { FaUserCog } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
+import Button from "react-bootstrap/Button";
 const Dashboard = () => {
   const { barChartData, LineChartData, userList } = useContext(UserContext);
   const loggedUser = localStorage.getItem("currentUser");
+  const logout = () => {
+    localStorage.setItem("currentUser", "");
+    window.location.replace("/login");
+  };
   return (
     <div className="dashboard">
-      <div className="dashboard__logo">
-        <img src={logo} alt="novelty logo" />
+      <div className="dashboard__header">
+        <div className="dashboard__logo">
+          <img src={logo} alt="novelty logo" />
+        </div>
+        <Button
+          variant="danger"
+          className="my-3 dashboard__logout-btn"
+          onClick={logout}
+        >
+          <MdLogout /> Logout
+        </Button>
       </div>
       <h1 className="dashboard__heading">
         <RiDashboardFill />

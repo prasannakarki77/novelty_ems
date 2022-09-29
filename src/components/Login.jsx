@@ -28,7 +28,7 @@ const Login = () => {
       console.log(verifyUser);
       if (verifyUser) {
         localStorage.setItem("currentUser", verifyUser.name);
-        window.location.replace("/dashboard");
+        window.location.replace("/");
       } else {
         toast.error("Invalid credentials!! Try again.");
       }
