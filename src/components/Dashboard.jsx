@@ -37,10 +37,10 @@ const Dashboard = () => {
 
           <p className="user-count">{userList.length}</p>
         </Link>
-        <Link to="/dashboard" className="box">
+        <div className="box">
           <FaUserCog className="box__icon" />
           <h4 className="user">{loggedUser}</h4>
-        </Link>
+        </div>
         <div className="box">
           <h3 className="box__heading">Novelty Employees Growth</h3>
           <BarChart width={480} height={250} data={barChartData}>

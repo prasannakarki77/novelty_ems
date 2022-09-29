@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 import UserContext from "../Context/UserContext";
 function UpdateForm(props) {
@@ -13,10 +13,6 @@ function UpdateForm(props) {
     setPhone,
     setDepartment,
     updateUser,
-    name,
-    email,
-    phone,
-    department,
     selectedUser,
   } = useContext(UserContext);
 
@@ -29,7 +25,7 @@ function UpdateForm(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Add New Employee
+          Update employee details
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

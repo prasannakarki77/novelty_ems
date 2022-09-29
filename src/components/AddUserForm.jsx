@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import UserContext from "../Context/UserContext";
 function AddUserForm(props) {
