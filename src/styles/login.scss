@@ -18,7 +18,9 @@
     outline: none;
     border: none;
     transition: all 0.3s;
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active {
       background-color: #9d6939;
       transform: translateY(-2px);
     }
