@@ -17,8 +17,8 @@
 Although, there is only a login but no registraion option, the validations has been applied to login form.
 The following is the correct login credentials.
 
-Email - prasanna.karki77@gmail.com
-Password - Kakashi@77
+- Email - prasanna.karki77@gmail.com
+- Password - Kakashi@77
 
 ## Pages Screenshots
 
